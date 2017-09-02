@@ -65,10 +65,6 @@ inquirer.prompt([{
 					return;
 					break;
 
-				default:
-					console.log("");
-					console.log("Sorry I don't understand");
-					console.log("");
 			}
 		});
 
@@ -86,9 +82,9 @@ inquirer.prompt([{
 function askClozeQuestion() {
 	inquirer.prompt([{
 
-			type: 'input',
-			message: clozeFlashCardQuestion[currentQuestion].partial + '\nYour Guess: ',//Display partial question (cloze deleted portion replaced with '...' and on a new line, 'Your Guess"
-			name: 'userGuess'
+		type: 'input',
+		message: clozeFlashCardQuestion[currentQuestion].partial + '\nYour Guess: ',//Display partial question (cloze deleted portion replaced with '...' and on a new line, 'Your Guess"
+		name: 'userGuess'
 
 	}]).then(function (answers) {
 		console.log(answers);
@@ -117,13 +113,12 @@ function askClozeQuestion() {
 			// Does the user want to go again?
 			inquirer.prompt([
 				{
-					type: 'confirm',
-					message: 'Would you like to run through the desk one more time?',
-					name: 'playAgain'
+				type: 'confirm',
+				message: 'Would you like to run through the desk one more time?',
+				name: 'playAgain'
 				}
 			]).then(function (answers) {
-				if (answers.playAgain) {//if true, reset
-					// Reset the game to initial/starting respective variable values
+				if (answers.playAgain) {//if true, reset to initial/starting respective variable values
 					currentQuestion = 0;
 					answerRight = 0;
 					answerWrong = 0;
@@ -131,7 +126,7 @@ function askClozeQuestion() {
 					// Call askClozeQuestion function
 					askClozeQuestion();
 				} else {
-					// Exit the application
+					// End the application
 					console.log('Bye Felicia!');
 				}
 			})
@@ -142,7 +137,7 @@ function askClozeQuestion() {
 // // Call askClozeQuestion function
 // askClozeQuestion();
 //
-// askBasicQuestion prompts the user to answer a given cloze-deleted question
+// askBasicQuestion prompts the user to answer basic sets/questions
 function askBasicQuestion() {
     inquirer.prompt([{
         type: 'input',
